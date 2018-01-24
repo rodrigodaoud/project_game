@@ -63,7 +63,7 @@ Game.prototype.correctCombination = function(){
 
     window.setTimeout(function(){
         self.correctDiv.remove();
-    }, 1000);
+    }, 500);
 }
 
 Game.prototype.wrongCombination = function(){
@@ -78,7 +78,7 @@ Game.prototype.wrongCombination = function(){
 
     window.setTimeout(function(){
         self.wrongDiv.remove();
-    }, 1000);
+    }, 500);
 }
 
 
@@ -95,7 +95,7 @@ Game.prototype.init = function(){
     self.keysPlayerOne = new Keys();
     
     var middle = Math.floor(self.size / 2);
-    self.player = new Player(middle - 1, 0, self.gameDiv);
+    self.playerOne = new PlayerOne(middle - 1, 0, self.gameDiv);
 
     self.getKeys();
 
@@ -120,6 +120,16 @@ Game.prototype.updateCombinationElement = function () {
 }
 
 Game.prototype.checkIfWinnerOne = function() {
+    var self = this;
+
+    if (self.player.y === self.size -1){
+        self.gameOver();
+    }
+    //check if any player if on the winner zone
+    //If that is the case we invoke self.gameOver();
+
+}
+Game.prototype.checkIfWinnerTwo = function() {
     var self = this;
 
     if (self.player.y === self.size -1){

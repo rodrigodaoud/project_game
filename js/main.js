@@ -155,6 +155,7 @@ function main(){
 
         //eveneListener to playAgainButton
         playAgainButton.addEventListener('click', playAgainButtonClick);
+        
     }
     
     function deleteGameOverScreen(){

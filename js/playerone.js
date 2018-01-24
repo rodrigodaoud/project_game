@@ -1,6 +1,6 @@
 'use strict'
 
-function Player(x, y, containerElement, color){
+function PlayerOne(x, y, containerElement, color){
     var self = this;
     self.x = x;
     self.y = y;

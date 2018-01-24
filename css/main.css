@@ -1,0 +1,168 @@
+
+/* ---- reset ---- */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center; 
+}
+
+/* ------------------------ typography ------------------------ */
+
+@font-face{
+  font-family: 'Digital Gaming';
+  src: url('fonts/digitalgaming.TTF');
+}
+
+.game-title{
+  text-align: center;
+  font-size: 26px;
+}
+.player-winner{
+  font-size: 36px;
+  font-family: 'Digital Gaming';
+}
+.combo-display-one h1{
+  letter-spacing: 10px;
+}
+.correct h1{
+  font-size: 50px;
+  text-align: center;
+  color: rgb(142, 245, 142);
+}
+.wrong h1{
+  font-size: 50px;
+  text-align: center;
+  color: rgb(241, 122, 122);
+}
+
+/* ------------------------ layout ------------------------ */
+
+body{
+font-family: 'Digital Gaming';
+background: url('img/stars.gif');
+background-repeat: no-repeat;
+background-size: 100% 110%;
+color: white;
+padding: 20px;
+}
+
+#main-screen{
+  width: 800px;
+  height: 800px;
+  margin-top: 60px;
+  margin-bottom: 45px;
+}
+.background-start-screen{
+  width: 100%;
+}
+.start-screen{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  background-repeat: no-repeat;
+  background-size: 800px 800px;
+}
+
+.game-screen{
+  display: none;
+}
+.gameover-screen{
+  display: none;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+
+/* ------------------------ components ------------------------ */
+
+/* ---- START SCREEN ---- */
+
+.start-button{
+  text-align: center;
+}
+.play button{
+  width: auto;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Digital Gaming';
+  font-size: 24px;
+  color: yellow;
+  margin-bottom: 50px;
+}
+.inst button{
+  width: auto;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Digital Gaming';
+  font-size: 16px;
+  color: white;
+}
+.start-button button:hover{
+  cursor: pointer;
+}
+audio{
+  display: none;
+}
+
+/* ---- GAME SCREEN ---- */
+
+.game-row{
+  width: 100%;
+  display: flex;
+}
+.game-column{
+  height: 100%;
+}
+.combo-display-one{
+  position: absolute;
+  top: 0;
+  width: 800px;
+  text-align: center;
+}
+.correct{
+  width: 800px;
+  position: absolute;
+  top: 400px;
+}
+.wrong{
+  width: 800px;
+  position: absolute;
+  top: 400px;
+}
+
+/* ---- GAME OVER SCREEN ---- */
+
+.playagain-button{
+  text-align: center;
+}
+
+.playagain-button button{
+  width: auto;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Digital Gaming';
+  font-size: 24px;
+  color: yellow;
+  margin-bottom: 50px;
+}
+.playagain-button button:hover{
+  cursor: pointer;
+}

@@ -14,7 +14,7 @@ function PlayerTwo(x, y, containerElement, color){
     self.init();
 }
 
-Player.prototype.init = function () {
+PlayerTwo.prototype.init = function () {
     var self = this;
 
     self.lastCombination = '';
@@ -22,7 +22,7 @@ Player.prototype.init = function () {
 
 }
 
-Player.prototype.draw = function() {
+PlayerTwo.prototype.draw = function() {
     var self = this;
 
     var cell = self.containerElement.children[self.y].children[self.x];
@@ -30,11 +30,11 @@ Player.prototype.draw = function() {
     
     cell.style.background = "url('./css/img/ship2.png') no-repeat";
     cell.style.backgroundSize = '100% 100%';
-    // cell.style.transform = 'rotate(180deg)'; 
+    cell.style.transform = 'rotate(180deg)'; 
     
 }
 
-Player.prototype.updateTo = function(direction) {
+PlayerTwo.prototype.updateTo = function(direction) {
     var self = this;
 
     switch (direction){
@@ -56,7 +56,7 @@ Player.prototype.updateTo = function(direction) {
 
 }
 
-Player.prototype.checkLimits = function(){
+PlayerTwo.prototype.checkLimits = function(){
     var self = this;
 
     if (self.x > self.size -1) {
@@ -65,24 +65,24 @@ Player.prototype.checkLimits = function(){
       if (self.x < 0) {
         self.x = 0;
       }
-      if (self.y < 0) {
-        self.y = 0;
+      if (self.y > self.size -1) {
+        self.y = self.size - 1;
       }
 } 
 
-Player.prototype.clearCombination = function() {
+PlayerTwo.prototype.clearCombination = function() {
     var self = this;
     
     self.lastCombination = '';
 }
 
-Player.prototype.addKey = function(key) {
+PlayerTwo.prototype.addKey = function(key) {
     var self = this;
 
     self.lastCombination += key;
 }
 
-Player.prototype.clear = function(){
+PlayerTwo.prototype.clear = function(){
     var self = this;
     
     var cell = self.containerElement.children[self.y].children[self.x];

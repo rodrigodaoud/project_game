@@ -14,7 +14,7 @@ function PlayerOne(x, y, containerElement, color){
     self.init();
 }
 
-Player.prototype.init = function () {
+PlayerOne.prototype.init = function () {
     var self = this;
 
     self.lastCombination = '';
@@ -22,7 +22,7 @@ Player.prototype.init = function () {
 
 }
 
-Player.prototype.draw = function() {
+PlayerOne.prototype.draw = function() {
     var self = this;
 
     var cell = self.containerElement.children[self.y].children[self.x];
@@ -34,7 +34,7 @@ Player.prototype.draw = function() {
     
 }
 
-Player.prototype.updateTo = function(direction) {
+PlayerOne.prototype.updateTo = function(direction) {
     var self = this;
 
     switch (direction){
@@ -56,7 +56,9 @@ Player.prototype.updateTo = function(direction) {
 
 }
 
-Player.prototype.checkLimits = function(){
+
+
+PlayerOne.prototype.checkLimits = function(){
     var self = this;
 
     if (self.x > self.size -1) {
@@ -70,19 +72,19 @@ Player.prototype.checkLimits = function(){
       }
 } 
 
-Player.prototype.clearCombination = function() {
+PlayerOne.prototype.clearCombination = function() {
     var self = this;
     
     self.lastCombination = '';
 }
 
-Player.prototype.addKey = function(key) {
+PlayerOne.prototype.addKey = function(key) {
     var self = this;
 
     self.lastCombination += key;
 }
 
-Player.prototype.clear = function(){
+PlayerOne.prototype.clear = function(){
     var self = this;
     
     var cell = self.containerElement.children[self.y].children[self.x];

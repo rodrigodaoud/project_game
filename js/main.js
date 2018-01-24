@@ -8,6 +8,25 @@ function main(){
     var bodyBackground = document.querySelector('body');
     var snd = new Audio('./css/sounds/coins.wav');
 
+    // ------------------ COUNTDOWN SCREEN
+
+    var countdownScreen;
+    var countNumbers;
+    var numbers;
+
+    function buildCountdownScreen(){
+        stage = 'countdown-screen'
+
+        countdownScreen = document.createElement('div');
+        countdownScreen.classList.add('countdown-screen');
+        mainScreen.appendChild(countdownScreen);
+
+        countNumbers = document.createElement('div');
+        countNumbers.classList.add('numbers-div');
+        countdownScreen.appendChild(countNumbers);
+
+    }
+
     // ------------------ START SCREEN
 
     var startScreen
@@ -90,9 +109,9 @@ function main(){
 
 
         game = new Game(mainScreen);
-        game.onGameOver(function() {
+        game.onGameOver(function(nameWinner) {
             deleteGameScreen();
-            buildGameOverScreen();
+            buildGameOverScreen(nameWinner);
         });
 
     }
@@ -113,7 +132,7 @@ function main(){
         buildGameScreen();
     }
 
-    function buildGameOverScreen(){
+    function buildGameOverScreen(nameWinner){
         stage = 'gameOver'
 
         bodyBackground.style.background = "url('./css/img/trophy.gif') no-repeat";
@@ -129,7 +148,7 @@ function main(){
         playerWinnerDiv.classList.add('player-winner');
         
         var playerWinnerTitle = document.createElement('h1');
-        playerWinnerTitle.innerText = 'Player One';
+        playerWinnerTitle.innerText = nameWinner;
         playerWinnerDiv.appendChild(playerWinnerTitle);
         
         gameOverScreen.appendChild(playerWinnerDiv);
@@ -155,7 +174,7 @@ function main(){
 
         //eveneListener to playAgainButton
         playAgainButton.addEventListener('click', playAgainButtonClick);
-        
+
     }
     
     function deleteGameOverScreen(){

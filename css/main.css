@@ -135,6 +135,12 @@ audio{
   width: 800px;
   text-align: center;
 }
+.combo-display-two{
+  position: absolute;
+  top: 880px;
+  width: 800px;
+  text-align: center;
+}
 .correct{
   width: 800px;
   position: absolute;

@@ -182,6 +182,7 @@ function main(){
         deleteGameOverScreen();
         buildCountdownScreen();
         coins.play();
+        overSound.pause();
         gameSound.currentTime = 0;
     }
 

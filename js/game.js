@@ -14,6 +14,10 @@ function Game(mainScreen){
     self.gameDiv;
     self.gameOver;
     self.currentTurn = 1;
+    self.sndGoodOne = new Audio ('./css/sounds/good.wav');
+    self.sndBadOne = new Audio ('./css/sounds/error.wav');
+    self.sndGoodTwo = new Audio ('./css/sounds/good.wav');
+    self.sndBadTwo = new Audio ('./css/sounds/error.wav');
 
     self.handleKeyPressedOne = function (e) {
     
@@ -100,6 +104,7 @@ Game.prototype.validateCombinationOne = function() {
                 // self.correctCombination();
                 self.combinationTextOne.style.color = 'rgb(142, 245, 142)';
                 self.getKeysOne();
+                self.sndGoodOne.play();
                 self.moveToOne('down');
                 self.playerOne.clearCombination();
             }
@@ -108,6 +113,7 @@ Game.prototype.validateCombinationOne = function() {
         else {
             // self.wrongCombination();
             self.combinationTextOne.style.color = 'rgb(241, 122, 122)';
+            self.sndBadOne.play();
             self.moveToOne('up');
             self.playerOne.clearCombination(); 
         }
@@ -121,6 +127,7 @@ Game.prototype.validateCombinationTwo = function() {
             // self.correctCombination();
             self.combinationTextTwo.style.color = 'rgb(142, 245, 142)';
             self.getKeysTwo()
+            self.sndGoodTwo.play();
             self.moveToTwo('up');
             self.playerTwo.clearCombination();
             }
@@ -128,6 +135,7 @@ Game.prototype.validateCombinationTwo = function() {
         else{
             // self.wrongCombination();
             self.combinationTextTwo.style.color = 'rgb(241, 122, 122)';
+            self.sndBadTwo.play();
             self.moveToTwo('down');
             self.playerTwo.clearCombination(); 
         }
@@ -252,7 +260,7 @@ Game.prototype.buildGrid = function() {
     self.gameDiv = document.createElement('div');
     self.gameDiv.classList.add('game-screen');
     self.gameDiv.style.display = 'inline-block';
-    self.mainScreen.appendChild(self.gameDiv); 
+    self.mainScreen.appendChild(self.gameDiv);
     
     for (var i = 0; i < self.size; i++){
         var gameRow = document.createElement('div');

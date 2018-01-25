@@ -4,18 +4,25 @@ function main(){
 
     var mainScreen = document.querySelector('#main-screen');
     var stage;
-   
     var bodyBackground = document.querySelector('body');
-    var snd = new Audio('./css/sounds/coins.wav');
+    var coins = new Audio('./css/sounds/coins.wav');
+    var startScreenSound = new Audio('./css/sounds/thriller.mp3');
 
     // ------------------ COUNTDOWN SCREEN
 
     var countdownScreen;
     var countNumbers;
     var numbers;
+    var goText = 'Go!';
+    var countdownSound = new Audio('./css/sounds/setgo.wav');
 
     function buildCountdownScreen(){
         stage = 'countdown-screen'
+
+        var counter = 4;
+
+        bodyBackground.style.background = "url('./css/img/stars.gif') no-repeat";
+        bodyBackground.style.backgroundSize = '100% 110%';
 
         countdownScreen = document.createElement('div');
         countdownScreen.classList.add('countdown-screen');
@@ -25,6 +32,26 @@ function main(){
         countNumbers.classList.add('numbers-div');
         countdownScreen.appendChild(countNumbers);
 
+        numbers = document.createElement('h1');
+        numbers.classList.add('countdown-numbers');
+        countNumbers.appendChild(numbers);
+
+        setInterval(function(){
+            counter--;
+            if(counter > 0){
+                numbers.innerText = counter;
+                countdownSound.play();
+            }
+            if(counter === 0){
+                clearInterval(counter);
+                buildGameScreen();
+            }
+            
+        }, 600);
+    }
+
+    function deleteCountdownScreen(){
+        countdownScreen.remove();
     }
 
     // ------------------ START SCREEN
@@ -33,10 +60,11 @@ function main(){
     var startGameButton;
     var instructionsButton;
 
-    var startButtonClick = function(){ 
-        snd.play();
+    var startButtonClick = function(){
+        coins.play();
+        startScreenSound.pause();
         deleteStartScreen();
-        buildGameScreen(); 
+        buildCountdownScreen(); 
 
     };
 
@@ -47,6 +75,8 @@ function main(){
     function buildStartScreen (){
         stage = 'start-screen';
 
+        startScreenSound.play();
+        startScreenSound.volume = 0.5;
         // -- creeating dom elements
         // -- main-div
         startScreen = document.createElement('div');
@@ -99,7 +129,10 @@ function main(){
     // ------------------ GAME SCREEN
 
     var game;
-    var gameDiv;   
+    var gameDiv;
+    var go; 
+    var goText;
+    var gameSound = new Audio ('./css/sounds/gameScreenSound.mp3');
     
     function buildGameScreen(){
         stage = 'game';
@@ -107,12 +140,29 @@ function main(){
         bodyBackground.style.background = "url('./css/img/stars.gif') no-repeat";
         bodyBackground.style.backgroundSize = '100% 110%';
 
+        go = document.createElement('div');
+        go.classList.add('go-text');
+        goText = document.createElement('h1');
+        goText.innerText = ('GO!');
+        mainScreen.appendChild(go);
+        go.appendChild(goText);
+
+        setTimeout(function(){
+            go.remove();
+        }, 600)
+
+
 
         game = new Game(mainScreen);
+        gameSound.play();
+        gameSound.volume = 0.5;
         game.onGameOver(function(nameWinner) {
             deleteGameScreen();
+            gameSound.pause();
             buildGameOverScreen(nameWinner);
         });
+
+        deleteCountdownScreen();
 
     }
 
@@ -126,19 +176,22 @@ function main(){
 
 
     var gameOverScreen;
-    var playAgainButton
+    var playAgainButton;
+    var overSound = new Audio ('./css/sounds/supermario.mp3');
     var playAgainButtonClick = function (){
         deleteGameOverScreen();
-        buildGameScreen();
+        buildCountdownScreen();
+        coins.play();
+        gameSound.currentTime = 0;
     }
 
     function buildGameOverScreen(nameWinner){
         stage = 'gameOver'
 
-        bodyBackground.style.background = "url('./css/img/trophy.gif') no-repeat";
-        bodyBackground.style.backgroundSize = "20% 20%";
-        bodyBackground.style.backgroundPosition = '50% 40%';
-        bodyBackground.style.backgroundColor = 'black';
+        overSound.play();
+
+        bodyBackground.style.background = "url('./css/img/starsvictory.gif') no-repeat";
+        bodyBackground.style.backgroundSize = "100% 110%";
         
         gameOverScreen = document.createElement('div');
         gameOverScreen.style.display = 'flex';

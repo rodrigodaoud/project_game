@@ -1,4 +1,6 @@
-
+/* div{
+  border: 1px solid white;
+} */
 /* ---- reset ---- */
 
 html {
@@ -32,16 +34,18 @@ body {
 .combo-display-one h1{
   letter-spacing: 10px;
 }
-.correct h1{
-  font-size: 50px;
-  text-align: center;
+.combo-display-two h1{
+  letter-spacing: 10px;
+}
+.countdown-numbers{
+  font-size: 180px;
   color: rgb(142, 245, 142);
 }
-.wrong h1{
-  font-size: 50px;
-  text-align: center;
-  color: rgb(241, 122, 122);
+.go-text h1{
+  font-size: 180px;
+  color: rgb(142, 245, 142);
 }
+
 
 /* ------------------------ layout ------------------------ */
 
@@ -86,6 +90,19 @@ padding: 20px;
 
 
 /* ------------------------ components ------------------------ */
+
+/* ---- COUNTDOWN SCREEN ---- */
+
+.countdown-screen{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+.numbers-div{
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+
 
 /* ---- START SCREEN ---- */
 
@@ -141,15 +158,11 @@ audio{
   width: 800px;
   text-align: center;
 }
-.correct{
-  width: 800px;
+.go-text{
   position: absolute;
-  top: 400px;
-}
-.wrong{
+  text-align: center;
   width: 800px;
-  position: absolute;
-  top: 400px;
+  top: 250px;
 }
 
 /* ---- GAME OVER SCREEN ---- */

@@ -70,7 +70,6 @@ function main(){
     };
 
     var startInstructionsButton = function(){ 
-        console.log('Instructions button')
         if(instructionsScreen.style.display === 'none'){
             instructionsScreen.style.display = 'flex';
             deleteStartScreen();
@@ -266,6 +265,12 @@ function main(){
         
         var playerWinnerTitle = document.createElement('h1');
         playerWinnerTitle.innerText = nameWinner;
+        if(nameWinner === 'Player One'){
+            playerWinnerTitle.style.color = ('#3d49ec');
+        }
+        if(nameWinner === 'Player Two'){
+            playerWinnerTitle.style.color = ('#df3f3f');
+        }
         playerWinnerDiv.appendChild(playerWinnerTitle);
         
         gameOverScreen.appendChild(playerWinnerDiv);

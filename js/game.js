@@ -141,36 +141,6 @@ Game.prototype.validateCombinationTwo = function() {
         }
 }
 
-Game.prototype.correctCombination = function(){
-    var self = this;
-
-    self.correctDiv = document.createElement('div');
-    self.correctDiv.classList.add('correct');
-    self.correctText = document.createElement('h1');
-    self.correctText.innerText = ('CORRECT!');
-    self.gameDiv.appendChild(self.correctDiv);
-    self.correctDiv.appendChild(self.correctText);
-
-    window.setTimeout(function(){
-        self.correctDiv.remove();
-    }, 500);
-}
-
-Game.prototype.wrongCombination = function(){
-    var self = this;
-
-    self.wrongDiv = document.createElement('div');
-    self.wrongDiv.classList.add('wrong');
-    self.wrongText = document.createElement('h1');
-    self.wrongText.innerText = ('WRONG!');
-    self.gameDiv.appendChild(self.wrongDiv);
-    self.wrongDiv.appendChild(self.wrongText);
-
-    window.setTimeout(function(){
-        self.wrongDiv.remove();
-    }, 500);
-}
-
 Game.prototype.moveToOne = function(direction) {
     var self = this;
 

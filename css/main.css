@@ -1,6 +1,6 @@
-/* div{
+div{
   border: 1px solid white;
-} */
+}
 /* ---- reset ---- */
 
 html {
@@ -45,6 +45,31 @@ body {
   font-size: 180px;
   color: rgb(142, 245, 142);
 }
+.player-inst{
+  text-align: center;
+}
+.player-one{
+  font-size: 36px;
+  color: #3d49ec;
+}
+.player-two{
+  font-size: 36px;
+  color: #df3f3f;
+}
+.player-inst p{
+  font-size: 30px;
+}
+.objective{
+  text-align: center;
+}
+.objective h1{
+  font-size: 36px;
+  color: yellow;
+}
+.objective p{
+  font-size: 28px;
+}
+
 
 
 /* ------------------------ layout ------------------------ */
@@ -130,11 +155,43 @@ padding: 20px;
   font-size: 16px;
   color: white;
 }
+.inst button:hover{
+  cursor: pointer;
+}
+.instructions-screen{
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.players-div{
+  display: flex;
+  margin-bottom: 80px;
+}
+.player-inst{
+  margin-right: 40px;
+  margin-left: 40px;
+}
 .start-button button:hover{
   cursor: pointer;
 }
 audio{
   display: none;
+}
+.objective{
+  margin-bottom: 100px;
+}
+.close-btn button{
+  width: auto;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Digital Gaming';
+  font-size: 24px;
+  color: yellow;
+}
+.close-btn button:hover{
+  cursor: pointer;
 }
 
 /* ---- GAME SCREEN ---- */

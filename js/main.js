@@ -59,6 +59,7 @@ function main(){
     var startScreen
     var startGameButton;
     var instructionsButton;
+    var instructionsScreen;
 
     var startButtonClick = function(){
         coins.play();
@@ -70,6 +71,10 @@ function main(){
 
     var startInstructionsButton = function(){ 
         console.log('Instructions button')
+        if(instructionsScreen.style.display === 'none'){
+            instructionsScreen.style.display = 'flex';
+            deleteStartScreen();
+        }
     };
 
     function buildStartScreen (){
@@ -111,9 +116,67 @@ function main(){
         instructionsButton.innerHTML = 'INSTRUCTIONS';
         instrButtonDiv.appendChild(instructionsButton);
 
+        // -- instructions
+        instructionsScreen = document.createElement('div');
+        instructionsScreen.classList.add('instructions-screen');
+        instructionsScreen.style.display = 'none';
+        mainScreen.appendChild(instructionsScreen);
+
+        var playersDiv = document.createElement('div');
+        playersDiv.classList.add('players-div');
+        instructionsScreen.appendChild(playersDiv);
+
+        var playerOneDiv = document.createElement('div');
+        playerOneDiv.classList.add('player-inst');
+        var instPlayerOne = document.createElement('h1');
+        instPlayerOne.classList.add('player-one');
+        instPlayerOne.innerHTML = ('Player 1');
+        var parPlayerOne = document.createElement('p');
+        parPlayerOne.innerHTML = ('KEYS:'  + '<br/>' +  'W, A, S, D ');
+        playerOneDiv.appendChild(instPlayerOne);
+        playerOneDiv.appendChild(parPlayerOne);
+        playersDiv.appendChild(playerOneDiv)
+
+        var playerTwoDiv = document.createElement('div');
+        playerTwoDiv.classList.add('player-inst');
+        var instPlayerTwo = document.createElement('h1');
+        instPlayerTwo.classList.add('player-two');
+        instPlayerTwo.innerHTML = ('Player 2');
+        var parPlayerTwo = document.createElement('p');
+        parPlayerTwo.innerHTML = ('KEYS:' + '<br/>' +  'I, J, K, L ');
+        playerTwoDiv.appendChild(instPlayerTwo);
+        playerTwoDiv.appendChild(parPlayerTwo);
+        playersDiv.appendChild(playerTwoDiv);
+
+        var objectiveDiv = document.createElement('div');
+        objectiveDiv.classList.add('objective');
+        var objTitle = document.createElement('h1');
+        objTitle.innerHTML = ('OBJECTIVES');
+        var objText = document.createElement('p');
+        objText.innerHTML = ('<br/>' + '- Type the right combination of letters to move forward' + '<br/>' + '<br/>' + '- If you make a mistake you move back one space' + '<br/>' + '<br/>' + '- Cross the opponent\'s line first to win the game');
+        objectiveDiv.appendChild(objTitle);
+        objectiveDiv.appendChild(objText);
+        instructionsScreen.appendChild(objectiveDiv);
+
+        var closeButtonDiv = document.createElement('div');
+        closeButtonDiv.classList.add('close-btn')
+        var closeButton = document.createElement('button');
+        closeButton.innerText = ('CLOSE');
+        instructionsScreen.appendChild(closeButtonDiv);
+        closeButtonDiv.appendChild(closeButton);
+
+        var closeInstructionsButton = function(){
+            if(instructionsScreen.style.display === 'flex'){
+            instructionsScreen.style.display = 'none';
+            closeButton.removeEventListener('click', closeInstructionsButton);
+            buildStartScreen();
+        }
+    }
+
         // eventListener to startButton
         startGameButton.addEventListener('click', startButtonClick);
         instructionsButton.addEventListener('click', startInstructionsButton);
+        closeButton.addEventListener('click', closeInstructionsButton);
         
 
     }
